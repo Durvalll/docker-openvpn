@@ -2,6 +2,7 @@ From ubuntu:14.04
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update && apt-get install -y \
+    curl \
     easy-rsa \
     iptables \
     openvpn \
@@ -29,9 +30,10 @@ RUN cd /etc/openvpn/easy-rsa/ \
 
 RUN sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/ \
  && sudo gzip -d /etc/openvpn/server.conf.gz \
- && sudo sed -i 's/;push redirect-gateway def1 bypass-dhcp/push redirect-gateway def1 bypass-dhcp/g' /etc/openvpn/server.conf \
- && sudo sed -i 's/;push "dhcp-option DNS 208.67.222.222"/push "dhcp-option DNS 208.67.222.222"/g' /etc/openvpn/server.conf \
- && sudo sed -i 's/;push "dhcp-option DNS 208.67.220.220"/push "dhcp-option DNS 208.67.220.220"/g' /etc/openvpn/server.conf \
+ && sudo sed -i 's/;local a.b.c.d/mode server/g' /etc/openvpn/server.conf \
+ && sudo sed -i 's/;push "redirect-gateway def1 bypass-dhcp"/push "redirect-gateway def1 bypass-dhcp"/g' /etc/openvpn/server.conf \
+ && sudo sed -i 's/;push "dhcp-option DNS 208.67.222.222"/push "dhcp-option DNS 8.8.8.8"/g' /etc/openvpn/server.conf \
+ && sudo sed -i 's/;push "dhcp-option DNS 208.67.220.220"/push "dhcp-option DNS 8.8.4.4"/g' /etc/openvpn/server.conf \
  && sudo sed -i 's/dh dh1024.pem/dh dh2048.pem/g' /etc/openvpn/server.conf \
  && sudo sed -i 's/;user nobody/user nobody/g' /etc/openvpn/server.conf \
  && sudo sed -i 's/;group nogroup/group nogroup/g' /etc/openvpn/server.conf 
@@ -40,6 +42,7 @@ RUN sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /
 RUN sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 ADD start.sh /start.sh
+ADD get_ovpn.sh /get_ovpn.sh
 
 EXPOSE 1194/udp
 CMD './start.sh'
