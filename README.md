@@ -27,7 +27,8 @@ To add other users, you can simply run the following:
 docker exec -i -t 4f7 /get_ovpn.sh client2 `curl ifconfig.io` > client2.ovpn
 ```
 
-where 4f7 was the first three digits of the running container found by
+where 4f7 is something you need to replace with the first three digits of 
+your corresponding container ID found by
 running `docker ps`, e.g.:
 
 ```
