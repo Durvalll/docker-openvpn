@@ -27,7 +27,6 @@ RUN cd /etc/openvpn/easy-rsa/ \
  && ./build-ca --batch \
  && ./build-key-server --batch server \
  && ./build-dh --batch \
- #&& ./build-key --batch client1 \
  && cd keys/ \
  && cp index.txt serial ca.key ta.key server.crt server.key ca.crt dh2048.pem /etc/openvpn/
 
