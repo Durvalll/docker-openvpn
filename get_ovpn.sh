@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script is inspired directly from https://gist.github.com/trovao/18e428b5a758df24455b
+# This script is inspired from https://gist.github.com/trovao/18e428b5a758df24455b
 
 clientnum=${1?"The client num is required"}
 server=${2?"The server address is required"}
