@@ -1,10 +1,11 @@
-From ubuntu:14.04
+From ioft/armhf-ubuntu
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
     curl \
+    sudo \
     easy-rsa \
     iptables \
     openvpn \
