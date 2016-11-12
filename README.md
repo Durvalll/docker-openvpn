@@ -1,5 +1,6 @@
 # Docker-OpenVPN
-Dockerized OpenVPN *Server* using an Ubuntu base image.
+Dockerized OpenVPN *Server* using an Armhf-Ubuntu base image.
+
 
 # How to run
 Assuming you have Docker installed already, you can get an openvpn server up and running in the following quick steps:
