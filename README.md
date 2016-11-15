@@ -7,7 +7,7 @@ Assuming you have Docker installed already, you can get an openvpn server up and
 
 1. Build the container on the server instance:
   ```
-  bash build.sh
+  sudo bash build.sh
   ```
 
 2. Run the container on the server instance:
