@@ -1,5 +1,8 @@
 #!/bin/bash
-
+if (( $EUID != 0 )); then 
+    echo "This must be run as root. Try 'sudo bash $0'." 
+    exit 1 
+fi
 echo "$(tput setaf 2)                        ##         $(tput sgr0)"
 echo "$(tput setaf 2)                  ## ## ##        ==$(tput sgr0)"
 echo "$(tput setaf 2)               ## ## ## ## ##    ===$(tput sgr0)"
@@ -13,7 +16,7 @@ echo "$(tput setaf 6)This script will configure a OpenVPN Serve on your Raspberr
 read -p "$(tput bold ; tput setaf 2)Press [Enter] to begin, [Ctrl-C] to abort...$(tput sgr0)"
 
 echo "$(tput bold 6)Check if Docker is installed$(tput sgr0)"
-if ! docker_loc="$(type -p "$docker")" || [ -z "$docker" ]; then
+if ! docker_loc="$(type -p "docker")" || [ -z "docker" ]; then
   echo "$(tput bold 6)Installing Docker$(tput sgr0)"
   curl -sSL https://get.docker.com | sh
   sudo usermod -aG docker $USER
