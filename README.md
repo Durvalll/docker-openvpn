@@ -28,7 +28,7 @@ To add other users, you can simply run the following:
 docker exec -i -t 4f7 /get_ovpn.sh client2 `curl ifconfig.io` > client2.ovpn
 ```
 Pro tip:
->you can change the 'curk ifcinfig.io' for a DDNS Domain(like no-ip,duckdns and etc...)
+>you can change the 'curl ifconfig.io' for a DDNS Domain(like no-ip,duckdns and etc...)
 >In the comand above or/and in the run.sh
 
 where 4f7 is something you need to replace with the first three digits of 
