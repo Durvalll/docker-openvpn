@@ -19,7 +19,7 @@ echo "$(tput bold 6)Check if Docker is installed$(tput sgr0)"
 if ! docker_loc="$(type -p "docker")" || [ -z "docker" ]; then
   echo "$(tput bold 6)Installing Docker$(tput sgr0)"
   curl -sSL https://get.docker.com | sh
-  sudo usermod -aG docker $USER
+  sudo usermod -aG docker pi
 fi
 # no cache for additional security (keys refreshed each time building)
 docker build --no-cache -t openvpn .
